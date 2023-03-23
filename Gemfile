@@ -9,3 +9,8 @@ gem "rake"
 group :development, :test do
   gem "standard"
 end
+
+group :test do
+  gem "rspec"
+  gem "rack-test"
+end
