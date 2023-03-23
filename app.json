@@ -1,4 +1,9 @@
 {
+  "addons": [
+    {
+      "plan": "jawsdb:leopard"
+    }
+  ],
   "environments": {
     "test": {
       "scripts": {
