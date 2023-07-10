@@ -9,7 +9,7 @@ describe "web" do
       expect(last_response).to be_ok
     end
     it "should return pong" do
-      expect(last_response.body).to eq "Hello, world!"
+      expect(last_response.body).to eq "pong"
     end
   end
 end
