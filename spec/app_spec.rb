@@ -16,7 +16,7 @@ describe "web" do
     it "should timeout after reasonable time" do
       # Use Timeout to avoid waiting the full 31 seconds in tests
       expect {
-        Timeout::timeout(2) do
+        Timeout.timeout(2) do
           get "/h12"
         end
       }.to raise_error(Timeout::Error)
