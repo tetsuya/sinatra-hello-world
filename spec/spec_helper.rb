@@ -1,5 +1,6 @@
 require "rack/test"
 require "rspec"
+require "timeout"
 
 ENV["RACK_ENV"] = "test"
 
