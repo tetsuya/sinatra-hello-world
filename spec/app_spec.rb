@@ -22,4 +22,29 @@ describe "web" do
       }.to raise_error(Timeout::Error)
     end
   end
+  
+  context "GET /cpu" do
+    it "should return 200 ok" do
+      get "/cpu"
+      expect(last_response).to be_ok
+    end
+    
+    it "should return JSON with CPU test results" do
+      get "/cpu", iterations: 1000
+      expect(last_response.content_type).to include("application/json")
+      
+      response_data = JSON.parse(last_response.body)
+      expect(response_data).to have_key("message")
+      expect(response_data).to have_key("iterations")
+      expect(response_data).to have_key("duration_seconds")
+      expect(response_data).to have_key("result")
+      expect(response_data["iterations"]).to eq(1000)
+    end
+    
+    it "should use default iterations when none provided" do
+      get "/cpu"
+      response_data = JSON.parse(last_response.body)
+      expect(response_data["iterations"]).to eq(1_000_000)
+    end
+  end
 end
